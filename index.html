@@ -7,6 +7,13 @@
     <meta name="description" content="Juan Eduardo Vargas Gudiño - FESTER SMART. Distribuidor Autorizado Fester. Impermeabilizantes, aditivos y soluciones profesionales.">
     <title>Juan Eduardo Vargas Gudiño - FESTER SMART</title>
 
+    <!-- PWA Manifest & Apple Touch Icons -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1hPnQvfIgBMpFVsCuvv2ptBhvCg2rWy8K">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Fester Smart">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,7 +104,6 @@
 
     <div class="relative z-10 w-full max-w-md card-wallpaper rounded-3xl shadow-2xl overflow-hidden border border-slate-100 my-auto">
         
-        <!-- Header Banner with Cover Photo -->
         <div class="h-32 bg-slate-900 relative overflow-hidden flex items-center justify-center">
             <img 
                 src="https://lh3.googleusercontent.com/d/1Qyhq31Y2N3TqC7XDQoVdZ_yWTIhnyvi5" 
@@ -188,19 +194,25 @@
                     Guardar Contacto en Teléfono
                 </button>
 
+                <button id="install-pwa-btn" class="hidden w-full items-center justify-center bg-gradient-to-r from-red-600 to-rose-600 text-white font-bold py-3.5 px-4 rounded-xl hover:from-red-700 hover:to-rose-700 transition-all duration-200 shadow-lg shadow-red-600/30 active:scale-[0.99]">
+                    <i data-lucide="download-cloud" class="w-5 h-5 mr-2.5"></i>
+                    Instalar Aplicación Fester Smart
+                </button>
+
                 <button id="show-qr-btn" class="w-full flex items-center justify-center bg-slate-100 text-slate-800 font-bold py-3 px-4 rounded-xl hover:bg-slate-200 transition-all duration-200 border border-slate-200 active:scale-[0.99]">
                     <i data-lucide="qr-code" class="w-4 h-4 mr-2.5 text-red-600"></i>
                     Compartir Mi Tarjeta / QR
                 </button>
 
                 <button id="show-instructions-btn" class="w-full text-center text-slate-500 font-medium text-xs py-2 hover:text-red-600 transition-colors flex items-center justify-center gap-1.5">
-                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                    ¿Cómo instalar esta tarjeta como app?
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+                    ¿Cómo instalar esta app paso a paso?
                 </button>
             </footer>
         </div>
     </div>
 
+    <!-- Modals -->
     <div id="services-modal" class="hidden fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 z-50">
         <div class="modal-content bg-slate-50 rounded-3xl shadow-2xl max-w-lg w-full relative scale-95 opacity-0 flex flex-col border border-slate-200 overflow-hidden max-h-[85vh]">
             <div class="p-5 bg-white border-b border-slate-200 flex items-center justify-between sticky top-0 z-10">
@@ -298,16 +310,16 @@
                 </div>
                 
                 <p class="text-slate-500 mt-4 text-xs leading-relaxed">
-                    Escanea con la cámara de tu teléfono para abrir esta tarjeta digital.
+                    Escanea con la cámara de tu teléfono para abrir esta PWA digital.
                 </p>
 
                 <div class="mt-5 space-y-2">
                     <button id="copy-link-btn" class="w-full flex items-center justify-center bg-slate-100 text-slate-700 font-bold py-2.5 px-4 rounded-xl hover:bg-slate-200 transition-colors text-xs border border-slate-200">
-                        <i data-lucide="copy" class="w-4 h-4 mr-2"></i>Copiar Enlace de la Tarjeta
+                        <i data-lucide="copy" class="w-4 h-4 mr-2"></i>Copiar Enlace
                     </button>
 
                     <button id="native-share-btn" class="w-full flex items-center justify-center bg-red-600 text-white font-bold py-2.5 px-4 rounded-xl hover:bg-red-700 transition-colors text-xs shadow-md shadow-red-600/20">
-                        <i data-lucide="share-2" class="w-4 h-4 mr-2"></i>Compartir por WhatsApp / Apps
+                        <i data-lucide="share-2" class="w-4 h-4 mr-2"></i>Compartir por Apps
                     </button>
                 </div>
             </div>
@@ -319,9 +331,9 @@
             <div class="bg-gradient-to-r from-red-700 to-red-600 p-5 text-white relative">
                 <h2 class="text-lg font-extrabold flex items-center gap-2">
                     <i data-lucide="smartphone" class="w-5 h-5 text-red-200"></i>
-                    Instalar en Pantalla de Inicio
+                    Instalar PWA en tu Dispositivo
                 </h2>
-                <p class="text-xs text-red-100 mt-0.5">Acceso rápido sin descargar desde tienda de apps</p>
+                <p class="text-xs text-red-100 mt-0.5">Acceso instantáneo con soporte offline</p>
                 <button id="close-instructions-modal-btn" class="absolute top-4 right-4 text-white/80 hover:text-white p-1">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
@@ -334,21 +346,20 @@
                         En iPhone / iPad (Safari)
                     </h3>
                     <ol class="space-y-2 text-slate-600 text-xs">
-                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">1.</span><span>Toca el botón <strong>Compartir</strong> (icono de cuadrado con flecha arriba).</span></li>
+                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">1.</span><span>Toca el botón <strong>Compartir</strong> (cuadrado con flecha arriba).</span></li>
                         <li class="flex items-start"><span class="font-bold text-red-600 mr-2">2.</span><span>Desplázate y selecciona <strong>"Agregar a inicio"</strong>.</span></li>
-                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">3.</span><span>Toca en <strong>"Agregar"</strong> para finalizar.</span></li>
+                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">3.</span><span>Toca en <strong>"Agregar"</strong>.</span></li>
                     </ol>
                 </div>
 
                 <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                     <h3 class="text-xs font-bold text-slate-900 mb-2 flex items-center gap-2">
                         <i data-lucide="smartphone" class="w-4 h-4 text-slate-700"></i>
-                        En Android (Chrome)
+                        En Android / PC (Chrome, Edge)
                     </h3>
                     <ol class="space-y-2 text-slate-600 text-xs">
-                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">1.</span><span>Toca los <strong>tres puntos superiores</strong> del navegador.</span></li>
-                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">2.</span><span>Selecciona <strong>"Instalar aplicación"</strong> o "Agregar a pantalla principal".</span></li>
-                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">3.</span><span>Confirma la instalación.</span></li>
+                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">1.</span><span>Si aparece el botón rojo superior <strong>"Instalar Aplicación"</strong>, púlsalo.</span></li>
+                        <li class="flex items-start"><span class="font-bold text-red-600 mr-2">2.</span><span>Si no, toca el menú de los 3 puntos y selecciona <strong>"Instalar aplicación"</strong>.</span></li>
                     </ol>
                 </div>
             </div>
@@ -362,6 +373,51 @@
 
     <script>
         lucide.createIcons();
+
+        // Register Service Worker for PWA Offline Support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('ServiceWorker registered scope: ', reg.scope))
+                    .catch(err => console.log('ServiceWorker registration failed: ', err));
+            });
+        }
+
+        // PWA Install Prompt Handler
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-pwa-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installBtn) {
+                installBtn.classList.remove('hidden');
+                installBtn.classList.add('flex');
+            }
+        });
+
+        if (installBtn) {
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        showToast('¡Aplicación instalada con éxito!');
+                    }
+                    deferredPrompt = null;
+                    installBtn.classList.add('hidden');
+                    installBtn.classList.remove('flex');
+                }
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            showToast('Fester Smart instalado en tu dispositivo');
+            if (installBtn) {
+                installBtn.classList.add('hidden');
+                installBtn.classList.remove('flex');
+            }
+        });
 
         function showToast(msg) {
             const toast = document.getElementById('toast');
@@ -463,7 +519,7 @@
 
         // Copy Link Action
         document.getElementById('copy-link-btn').addEventListener('click', () => {
-            copyToClipboard(window.location.href, 'Enlace de tarjeta copiado');
+            copyToClipboard(window.location.href, 'Enlace de PWA copiado');
         });
 
         // Native Share Action
@@ -472,42 +528,40 @@
                 try {
                     await navigator.share({
                         title: 'Juan Eduardo Vargas Gudiño - FESTER SMART',
-                        text: 'Conoce el catálogo y soluciones de impermeabilizantes Fester:',
+                        text: 'Conoce la app oficial de impermeabilizantes Fester:',
                         url: window.location.href,
                     });
                 } catch (err) {
-                    console.log('Share canceled or error');
+                    console.log('Share canceled or failed');
                 }
             } else {
-                copyToClipboard(window.location.href, 'Enlace copiado para compartir');
+                copyToClipboard(window.location.href, 'Enlace copiado al portapapeles');
             }
         });
 
-        // Save Contact vCard Generator
+        // Save Contact vCard Generation Action
         document.getElementById('save-contact-btn').addEventListener('click', () => {
-            const vcard = [
-                'BEGIN:VCARD',
-                'VERSION:3.0',
-                'FN:Juan Eduardo Vargas Gudiño',
-                'N:Vargas Gudiño;Juan Eduardo;;;',
-                'TITLE:Distribuidor Autorizado Fester',
-                'ORG:FESTER SMART',
-                'TEL;TYPE=WORK,VOICE:+523315450270',
-                'URL:' + window.location.href,
-                'NOTE:Impermeabilizantes, aditivos, selladores y soluciones profesionales para la construcción Fester.',
-                'END:VCARD'
-            ].join('\n');
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Juan Eduardo Vargas Gudiño
+N:Vargas Gudiño;Juan Eduardo;;;
+TITLE:Distribuidor Autorizado Fester
+ORG:FESTER SMART
+TEL;TYPE=WORK,VOICE:+523315450270
+URL:${window.location.href}
+NOTE:Impermeabilizantes, aditivos, selladores y soluciones profesionales para la construcción.
+END:VCARD`;
 
-            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'Juan_Eduardo_Vargas_Fester.vcf';
+            a.download = 'Juan_Eduardo_Vargas_Fester_Smart.vcf';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            showToast('Contacto descargado (.vcf)');
+            URL.revokeObjectURL(url);
+            showToast('Contacto descargado con éxito');
         });
     </script>
 </body>
